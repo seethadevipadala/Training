@@ -255,17 +255,17 @@ const game = {
 
 //2
 
-let avg = 0;
-let sum = 0;
-const odds = Object.values(game.odds)
-for (const odd of odds) {
-  sum =sum+ odd;
-}
-console.log(sum)
+// let avg = 0;
+// let sum = 0;
+// const odds = Object.values(game.odds)
+// for (const odd of odds) {
+//   sum =sum+ odd;
+// }
+// console.log(sum)
 
-avg = sum / odds.length;
+// avg = sum / odds.length;
 
-console.log(avg)
+// console.log(avg)
 // const odds = Object.keys(game.odds);
 // let average = 0;
 // const odds = Object.values(game.odds)
@@ -285,11 +285,100 @@ console.log(avg)
 //       Odd of victory Borrussia Dortmund: 6.5
 // Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
 
+// const val = Object.entries(game.odds)
+// console.log(val);
+// for (let [i, j] of val) {
+//   const a = i==='x' ? 'draw' :`victory of ${game[i]}`
+//   console.log(`odd of  ${a} : ${j}`)
+// }
 
-const val = Object.entries(game.odds)
-console.log(val);
-for (let [i, j] of val) {
-  const a = i==='x' ? 'draw' :`victory of ${game[i]}`
-  console.log(`odd of  ${a} : ${j}`)
+/////////////////////////////     Sets           ///////////////////////////
+
+// const ordredSet = new Set([1, 3, 2, 4, 3, 2, 1, 1])
+// console.log(ordredSet);
+// console.log(ordredSet.has(2))
+// console.log(ordredSet.has(9))
+// ordredSet.add('5')
+// console.log(ordredSet);
+// for (const ele of ordredSet) {
+//   console.log(ele)
+// }
+
+// const arr = ['sita', 'gita', 'swetha', 'sita', 'gita']
+// const arr1 = [...new Set(arr)];
+// console.log(arr1)
+// console.log(new Set('aassddffj').size)
+
+////////////////////////////////      Mpas           /////////////////////////
+
+// const rest = new Map();
+// rest.set('one', 1);
+// rest.set('two', 2).set('three', 3).set('four', 4);
+// console.log(rest);
+// console.log(rest.get('one'));
+// rest.delete('one');
+// console.log(rest);
+
+// //Convertion of objects to map
+
+// console.log(new Map(Object.entries(restaurant.openingHours)));
+
+//Quiz app
+// const question = new Map([
+//   ['question', 'what is the best programming language??'],
+//   [1, 'c'],
+//   [2, 'java'],
+//   [3, 'javascript'],
+//   ['correct', 3],
+//   [true, 'Correct'],
+//   [false,'Try again']
+// ])
+
+// console.log(question.get('question'));
+// for (let [key, value] of question) {
+//   if(typeof key==='number') console.log(`Option ${key}: ${value}`)
+// }
+
+// const ans = Number(prompt("enter answer"));
+// console.log(question.get((question.get('correct')===ans)))
+
+// Coding Challenge #3
+
+/* 
+Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+1. Create an array 'events' of the different game events that happened (no duplicates)
+2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+      [FIRST HALF] 17: ⚽️ GOAL
+*/
+
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+
+
+const events = [...new Set(gameEvents.values())];
+console.log(events)
+
+gameEvents.delete(64)
+
+console.log(`An event happened, on average, every ${90/gameEvents.size} minutes`)
+
+for (const [min, eve] of gameEvents) {
+  const half = min < 45 ? 'first half' : 'second half';
+  console.log(`[${half} ${min}] : ${eve}` )
 }
-
