@@ -15,4 +15,6 @@ const fixBirdCountLog = (arr) => {
   return arr;
 };
 
-console.log(fixBirdCountLog([2, 5, 0, 7, 4, 1]));
+console.log(
+  fixBirdCountLog([2, 5, 0, 7, 4, 1]
+  ));
